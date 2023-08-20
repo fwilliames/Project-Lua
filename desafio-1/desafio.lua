@@ -7,6 +7,9 @@ os.execute("cls")
 local monsterName = "CREEPER"
 local description = "Um monstro furtivo com temperamento explosivo"
 local emoji ="💥"
+local sound = "Tssssss"
+local favoriteTime = "Noturno"
+local item = "Polvora"
 
 --Atributos
 local attackAttribute = 10
@@ -32,10 +35,16 @@ local function getProgressBar(attribute)
 end
 --Cartao
 print("=================================================")
+print("| ")
 print("| " .. monsterName) -- ".." é o operador de concatenção
 print("| " .. description)
 print("| ")
+print("| Item: " .. item)
+print("| Som: " .. sound )
 print("| Emoji Favorito: " .. emoji)
+print("| Horario Favorito: " .. favoriteTime)
+
+print("| ")
 print("| Atributos")
 print("|    Ataque:       " .. getProgressBar(attackAttribute))
 print("|    Defesa:       " .. getProgressBar(defenseAttribute))
