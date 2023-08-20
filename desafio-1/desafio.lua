@@ -2,8 +2,8 @@
 os.execute("chcp 65001") -- muda a codificação do terminal para UTF-8
 os.execute("cls")
 
-local CARD_LIMIT <const> = "="
-local LINE_CARD <const> = "| "
+local CARD_LIMIT <const> = "#"
+local LINE_CARD <const> = "--- "
 
 --Criatura
 local monsterName = "CREEPER"
@@ -41,30 +41,33 @@ local function cardLimite(limit)
     for i = 1, 50, 1 do
         result = result .. limit
     end
-    return result
+    print(result)
+end
+
+local function cardLine(line)
+    return line
     
 end
 
 local function printCard(name, description, emoji, sound, favoriteTime, item, attack, defense, vitality, speed, inteligence)
-    print("=================================================")
-    print("| ")
-    print("| " .. name)
-    print("| " .. description)
-    print("| ")
-    print("| Item: " .. item)
-    print("| Som: " .. sound )
-    print("| Emoji Favorito: " .. emoji)
-    print("| Horario Favorito: " .. favoriteTime)
-
-    print("| ")
-    print("| Atributos")
-    print("|    Ataque:       " .. getProgressBar(attack))
-    print("|    Defesa:       " .. getProgressBar(defense))
-    print("|    Vida:         " .. getProgressBar(vitality))
-    print("|    Velocidade:   " .. getProgressBar(speed))
-    print("|    Inteligencia: " .. getProgressBar(inteligence))
-    print("| ")
-    print("=================================================")
+    cardLimite(CARD_LIMIT)
+    print(cardLine(LINE_CARD))
+    print(cardLine(LINE_CARD) .. name)
+    print(cardLine(LINE_CARD) .. description)
+    print(cardLine(LINE_CARD))
+    print(cardLine(LINE_CARD) .. "Item: " .. item)
+    print(cardLine(LINE_CARD) .. "Som: " .. sound )
+    print(cardLine(LINE_CARD) .. "Emoji Favorito: " .. emoji)
+    print(cardLine(LINE_CARD) .. "Horario Favorito: " .. favoriteTime)
+    print(cardLine(LINE_CARD))
+    print(cardLine(LINE_CARD) .. "Atributos")
+    print(cardLine(LINE_CARD) .. "   Ataque:       " .. getProgressBar(attack))
+    print(cardLine(LINE_CARD) .. "   Defesa:       " .. getProgressBar(defense))
+    print(cardLine(LINE_CARD) .. "   Vida:         " .. getProgressBar(vitality))
+    print(cardLine(LINE_CARD) .. "   Velocidade:   " .. getProgressBar(speed))
+    print(cardLine(LINE_CARD) .. "   Inteligencia: " .. getProgressBar(inteligence))
+    print(cardLine(LINE_CARD))
+    cardLimite(CARD_LIMIT)
     
 end
 
@@ -79,7 +82,6 @@ print("| Item: " .. monsterItem)
 print("| Som: " .. monsterSound )
 print("| Emoji Favorito: " .. monsterEmoji)
 print("| Horario Favorito: " .. monsterFavoriteTime)
-
 print("| ")
 print("| Atributos")
 print("|    Ataque:       " .. getProgressBar(attackAttribute))
