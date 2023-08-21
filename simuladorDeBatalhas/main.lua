@@ -1,4 +1,8 @@
 local utils = require("utils")
-utils.enableUtf8()
+local player = require("definitions.player")
+local colossus = require("definitions.colossus")
 
+utils.enableUtf8()
 utils.header()
+
+local boss = colossus
