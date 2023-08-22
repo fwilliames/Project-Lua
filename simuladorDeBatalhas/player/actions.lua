@@ -48,7 +48,7 @@ local actions = {}
                 playerData.potion = playerData.potion - 1
 
                 --Recuperando vida
-                local regenPoints = 5
+                local regenPoints = 10
                 playerData.health = math.min(playerData.maxHealth,playerData.health + regenPoints)
                 print("Voce usou um pote de regeneracao e recuperou alguns pontos de vida")
 
