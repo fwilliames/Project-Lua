@@ -25,6 +25,17 @@ local game = {}
         return validheroActions
     end
 
+    --[[
+        Performs the hero's (player's) turn, allowing the choice and execution of a valid action.
+
+        Parameters:
+        - playerData: A table containing player data.
+        - PlayerActions: A table containing player actions.
+        - creatureData: A table containing creature data.
+
+        Usage:
+        game.heroTurn(playerData, PlayerActions, creatureData)
+    ]]
     function game.heroTurn(playerData,PlayerActions,creatureData)
         print(
         string.format("qual sera a proxima acao de %s?",playerData.name)
