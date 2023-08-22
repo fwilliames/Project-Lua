@@ -55,8 +55,14 @@ local game = {}
             print(
                 string.format("Sua acao eh invalida, %s perdeu a vez!",playerData.name)
             )
-        end
-        
+        end       
     end
 
+    function game.bossTurn(playerData,creatureData,creatureActions)
+        utils.cardLimite()
+        local validBossActions = creatureActions.getValidActions(playerData,creatureData)
+        local bossAction = validBossActions[math.random(#validBossActions)]
+        bossAction.execute(playerData,creatureData)
+        utils.cardLimite()        
+    end
 return game
