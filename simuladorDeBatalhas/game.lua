@@ -1,6 +1,6 @@
 local utils = require("utils")
-local colossus = require("colossus.colossus")
-local colossusActions = require("colossus.actions")
+local colossus = require("creatures.colossus.colossus")
+local colossusActions = require("creatures.colossus.actions")
 local violet = require("hero.violet.violet")
 local violetActions = require("hero.violet.actions")
 
