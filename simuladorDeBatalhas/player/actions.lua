@@ -28,6 +28,28 @@ local actions = {}
                 end
             end         
         }
+
+        local regenPotion = {
+            description = "toma uma poção de regeneração",
+
+            requirement = function(playerData, creatureData)
+                return playerData.potion >= 1
+            end,
+
+            execute = function (playerData, creatureData)
+                --Retira um pote do inventario do Player
+                playerData.potion = playerData.potion - 1
+
+                --Recuperando vida
+                local regenPoints = 5
+                playerData.health = math.min(playerData.maxHealth,playerData.health + regenPoints)
+                print("Voce usou um pote de regeneracao e recuperou alguns pontos de vida")
+
+                
+            end
+        }
+
+
         actions.list[#actions + 1] = swordAttack
 
 
