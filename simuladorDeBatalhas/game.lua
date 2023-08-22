@@ -1,8 +1,8 @@
 local utils = require("utils")
 local colossus = require("colossus.colossus")
 local colossusActions = require("colossus.actions")
-local player = require("player.player")
-local playerActions = require("player.actions")
+local violet = require("player.violet")
+local violetActions = require("player.actions")
 
 local game = {}
 
@@ -100,8 +100,8 @@ local game = {}
         local creatureActions = colossusActions
         utils.printCard(creature)
 
-        local player = require("player.player")
-        local playerActions = require("player.actions")
+        local player = violet
+        local playerActions = violetActions
 
         creatureActions.build()
         playerActions.build()
