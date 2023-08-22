@@ -1,12 +1,6 @@
 local utils = require("modules.utils")
---local colossus = require("characters.creatures.colossus.data")
---local colossusActions = require("characters.creatures.colossus.actions")
---local violet = require("characters.heros.violet.data")
---local violetActions = require("characters.heros.violet.actions")
-local mervin = require("characters.heros.mervin.data")
-local mervinActions = require("characters.heros.mervin.actions")
-local drake = require("characters.creatures.drake.data")
-local drakeActions = require("characters.creatures.drake.actions")
+
+
 
 local game = {}
 
@@ -99,19 +93,25 @@ local game = {}
         local creature, creatureActions, player, playerActions = game.setup()
     ]]
     function game.setup()
-
-        --local creature = colossus
-        --local creatureActions = colossusActions
-
-        local creature = drake
-        local creatureActions = drakeActions
-
+        local chosenCreature = "drake"
+        local creature = require("characters.creatures.drake.data")
+        local creatureActions = require("characters.creatures.drake.actions")
         utils.printCard(creature)
 
-        --local player = violet
-        --local playerActions = violetActions
-        local player = mervin
-        local playerActions = mervinActions
+        print([[Escolha seu Héroi: 
+                1 - Violete
+                2 - Mervin
+        ]])
+
+        local chosenPlayer = utils.ask()
+        if chosenPlayer == 1 then
+            chosenPlayer = "violet"
+        else
+            chosenPlayer = "Mervin"
+        end
+        
+        local player = require("characters.heros.".. chosenPlayer ..".data")
+        local playerActions = require("characters.heros.".. chosenPlayer ..".actions")
 
         creatureActions.build()
         playerActions.build()
