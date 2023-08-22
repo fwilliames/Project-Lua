@@ -93,9 +93,19 @@ local game = {}
         local creature, creatureActions, player, playerActions = game.setup()
     ]]
     function game.setup()
-        local chosenCreature = "drake"
-        local creature = require("characters.creatures.drake.data")
-        local creatureActions = require("characters.creatures.drake.actions")
+
+
+        local randomCreature = math.random(0,1)
+        local chosenCreature = ""
+
+        if randomCreature == 1 then
+            chosenCreature = "drake"
+        else
+            chosenCreature = "colossus"
+
+        end
+        local creature = require("characters.creatures.".. chosenCreature ..".data")
+        local creatureActions = require("characters.creatures.".. chosenCreature ..".actions")
         utils.printCard(creature)
 
         print([[Escolha seu Héroi: 
