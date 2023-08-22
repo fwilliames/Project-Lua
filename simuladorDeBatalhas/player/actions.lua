@@ -3,6 +3,12 @@ local actions = {}
 
     actions.list = {}
 
+    --[[
+        Constructs the list of available actions, including a sword attack and a regeneration potion.
+
+        Usage:
+        actions.build()
+    ]]
     function actions.build()
         actions.list = {}
 
@@ -60,21 +66,21 @@ local actions = {}
     end
 
     --[[
-    Returns a list of valid actions for a specific player and creature, based on requirements.
+        Returns a list of valid actions for a specific player and creature, based on requirements.
 
-    Parameters:
-    - playerData: A table containing player data.
-    - creatureData: A table containing creature data.
+        Parameters:
+        - playerData: A table containing player data.
+        - creatureData: A table containing creature data.
 
-    Returns:
-    A table containing the actions that meet the requirements for the player and creature.
+        Returns:
+        A table containing the actions that meet the requirements for the player and creature.
 
-    Example Usage:
-    local validActions = actions.getValidActions(playerData, creatureData)
-    for _, action in ipairs(validActions) do
-        print("Valid action: " .. action.name)
-    end
-]]
+        Example Usage:
+        local validActions = actions.getValidActions(playerData, creatureData)
+        for _, action in ipairs(validActions) do
+            print("Valid action: " .. action.name)
+        end
+    ]]
     function actions.getValidActions(playerData, creatureData)
         local validActions = {}
         
