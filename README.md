@@ -1,2 +1,2 @@
 # LuaProject
-Scripts desenvolvidos para pratica da linguagem Lua
+Simulador de batalhas RPG criado com scripts em lua
