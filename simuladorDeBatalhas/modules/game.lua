@@ -3,6 +3,8 @@ local colossus = require("characters.creatures.colossus.data")
 local colossusActions = require("characters.creatures.colossus.actions")
 local violet = require("characters.heros.violet.data")
 local violetActions = require("characters.heros.violet.actions")
+local mervin = require("characters.heros.mervin.data")
+local mervinActions = require("characters.heros.mervin.actions")
 
 local game = {}
 
@@ -100,8 +102,10 @@ local game = {}
         local creatureActions = colossusActions
         utils.printCard(creature)
 
-        local player = violet
-        local playerActions = violetActions
+        --local player = violet
+        --local playerActions = violetActions
+        local player = mervin
+        local playerActions = mervinActions
 
         creatureActions.build()
         playerActions.build()

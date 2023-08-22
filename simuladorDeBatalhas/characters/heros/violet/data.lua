@@ -1,5 +1,5 @@
 local data = {}
-    data.name = "data Van Wision"
+    data.name = "Violet Van Wision"
     data.description = "Uma guerreira espadachim"
     data.maxHealth = 10
     data.health = 10
