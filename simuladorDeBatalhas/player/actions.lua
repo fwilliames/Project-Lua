@@ -21,7 +21,7 @@ local actions = {}
                 --Apresentando o resultado
                 if sucess then
                     print(
-                        string.format("Voce acertou a criatura e deu %d pontos de dano!",damage)
+                        string.format("%s acertou a %s e deu %d pontos de dano!",playerData.name,creatureData.name,damage)
                     )
                     creatureData.health = creatureData.health - damage
                     local healthRate = math.floor((creatureData.health / creatureData.maxHealth) * 10)
@@ -29,7 +29,9 @@ local actions = {}
                         string.format("%s: %s",creatureData.name, utils.getProgressBar(healthRate))
                     )
                 else
-                    print("Voce errou o ataque!")
+                    print(
+                        string.format("%s errou o ataque!",playerData.name)
+                    )
                 end
             end         
         }
