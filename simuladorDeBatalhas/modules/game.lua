@@ -1,10 +1,12 @@
 local utils = require("modules.utils")
-local colossus = require("characters.creatures.colossus.data")
-local colossusActions = require("characters.creatures.colossus.actions")
-local violet = require("characters.heros.violet.data")
-local violetActions = require("characters.heros.violet.actions")
+--local colossus = require("characters.creatures.colossus.data")
+--local colossusActions = require("characters.creatures.colossus.actions")
+--local violet = require("characters.heros.violet.data")
+--local violetActions = require("characters.heros.violet.actions")
 local mervin = require("characters.heros.mervin.data")
 local mervinActions = require("characters.heros.mervin.actions")
+local drake = require("characters.creatures.drake.data")
+local drakeActions = require("characters.creatures.drake.actions")
 
 local game = {}
 
@@ -98,8 +100,12 @@ local game = {}
     ]]
     function game.setup()
 
-        local creature = colossus
-        local creatureActions = colossusActions
+        --local creature = colossus
+        --local creatureActions = colossusActions
+
+        local creature = drake
+        local creatureActions = drakeActions
+
         utils.printCard(creature)
 
         --local player = violet
