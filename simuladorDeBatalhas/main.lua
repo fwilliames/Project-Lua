@@ -1,6 +1,6 @@
 local utils = require("utils")
-local player = require("definitions.player")
-local colossus = require("definitions.colossus")
+local player = require("simuladorDeBatalhas.player.player")
+local colossus = require("simuladorDeBatalhas.colossus.colossus")
 
 utils.enableUtf8()
 utils.header()
