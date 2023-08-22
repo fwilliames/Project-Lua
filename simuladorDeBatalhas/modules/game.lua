@@ -27,6 +27,21 @@ local game = {}
     end
 
     --[[
+        Displays the list of available heroes for selection.
+
+        Usage:
+        game.displayHeros()
+    ]]
+    function game.displayHeros()
+        local heros ={"violet","mervin"}
+        for i, hero in pairs(heros) do
+            print(
+                string.format("%d %s", i, hero)
+            )
+        end
+    end
+
+    --[[
         Performs the hero's (player's) turn, allowing the choice and execution of a valid action.
 
         Parameters:
@@ -152,10 +167,27 @@ local game = {}
         local player, playerActions = game.defPlayer()
     ]]
     function game.defPlayer()
-        print([[Escolha seu Héroi: 
-                1 - Violete
-                2 - Mervin
-        ]])
+        
+        local chosenPlayer = game.chosenPlayer()
+
+        local player = require("characters.heros.".. chosenPlayer ..".data")
+        local playerActions = require("characters.heros.".. chosenPlayer ..".actions")
+
+        return player, playerActions
+    end
+
+    --[[
+        Allows the player to choose their hero from the list of available heroes.
+
+        Returns:
+        - chosenPlayer: The name of the hero chosen by the player.
+
+        Usage:
+        local chosenPlayer = game.chosenPlayer()
+    ]]
+    function game.chosenPlayer()
+        print("Escolha quem será seu Héroi")
+        game.displayHeros()
 
         local chosenPlayer = utils.ask()
         if chosenPlayer == 1 then
@@ -163,11 +195,8 @@ local game = {}
         else
             chosenPlayer = "Mervin"
         end
-        
-        local player = require("characters.heros.".. chosenPlayer ..".data")
-        local playerActions = require("characters.heros.".. chosenPlayer ..".actions")
-
-        return player, playerActions
+        os.execute("cls")
+        return chosenPlayer
     end
 
 return game
