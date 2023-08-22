@@ -6,3 +6,4 @@ utils.enableUtf8()
 utils.header()
 
 local boss = colossus
+utils.printCard(boss)
