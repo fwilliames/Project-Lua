@@ -3,6 +3,7 @@ local player = require("player.player")
 local playerActions = require("player.actions")
 local colossus = require("colossus.colossus")
 local colossusActions = require("colossus.actions")
+local game = require("game")
 
 utils.enableUtf8()
 utils.header()
@@ -24,12 +25,7 @@ while true do
         string.format("qual sera a proxima acao de %s?",hero.name)
     )
     
-    local validheroActions = heroActions.getValidActions(hero,boss) --acrescentar ao utils uma funcao displayActions
-    for i, action in pairs(validheroActions) do
-        print(
-            string.format("%d. %s",i, action.description)
-        )
-    end
+    local validheroActions = game.displayActions(hero,heroActions,boss)
 
     local chosenId = utils.ask()
     local chosenAction = validheroActions[chosenId]
