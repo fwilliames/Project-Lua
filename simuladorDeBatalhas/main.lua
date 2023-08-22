@@ -1,24 +1,10 @@
 local utils = require("utils")
-local player = require("player.player")
-local playerActions = require("player.actions")
-local colossus = require("colossus.colossus")
-local colossusActions = require("colossus.actions")
 local game = require("game")
 
 utils.enableUtf8()
 utils.header()
 
-local boss = colossus
-local bossActions = colossusActions
-utils.printCard(boss)
-
-local hero = player
-local heroActions = playerActions
-utils.printCard(hero)
-
-heroActions.build()
-bossActions.build()
-
+local boss, bossActions, hero, heroActions = game.setup()
 
 while true do
     --hero Turn

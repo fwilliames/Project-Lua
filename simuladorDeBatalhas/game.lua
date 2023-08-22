@@ -1,4 +1,9 @@
 local utils = require("utils")
+local colossus = require("colossus.colossus")
+local colossusActions = require("colossus.actions")
+local player = require("player.player")
+local playerActions = require("player.actions")
+
 local game = {}
 
     --[[
@@ -75,6 +80,33 @@ local game = {}
         local bossAction = validBossActions[math.random(#validBossActions)]
         bossAction.execute(playerData,creatureData)
         utils.cardLimite()        
+    end
+
+    --[[
+        Sets up the beginning of the game, preparing creatures, creature actions, players, and player actions.
+
+        Returns:
+        - creature: A table containing creature data.
+        - creatureActions: A table containing creature actions.
+        - player: A module representing the player.
+        - playerActions: A table containing player actions.
+
+        Usage:
+        local creature, creatureActions, player, playerActions = game.setup()
+    ]]
+    function game.setup()
+
+        local creature = colossus
+        local creatureActions = colossusActions
+        utils.printCard(creature)
+
+        local player = require("player.player")
+        local playerActions = require("player.actions")
+
+        creatureActions.build()
+        playerActions.build()
+
+        return creature, creatureActions, player, playerActions
     end
 
 return game
