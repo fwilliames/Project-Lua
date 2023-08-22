@@ -2,18 +2,24 @@ local utils = require("utils")
 local player = require("player.player")
 local playerActions = require("player.actions")
 local colossus = require("colossus.colossus")
+local colossusActions = require("colossus.actions")
 
 utils.enableUtf8()
 utils.header()
 
 local boss = colossus
+local bossActions = colossusActions
 utils.printCard(boss)
+
 playerActions.build()
+bossActions.build()
 
 
 while true do
     --Player Turn
-    print("O que voce deseja fazer?")
+    print(
+        string.format("qual sera a proxima acao de %s?",player.name)
+    )
     
     local validPlayerActions = playerActions.getValidActions(player,boss) --acrescentar ao utils uma funcao displayActions
     for i, action in pairs(validPlayerActions) do
@@ -29,7 +35,9 @@ while true do
     if isActionValid then
         chosenAction.execute(player,boss)
     else
-        print("Sua acao eh invalida")
+        print(
+            string.format("Sua acao eh invalida, %s perdeu a vez!",player.name)
+        )
     end
 
     if boss.health <= 0 then
@@ -37,6 +45,11 @@ while true do
     end
 
     --Boss Turn
+    utils.cardLimite()
+    local validBossActions = bossActions.getValidActions(player,boss)
+    local bossAction = validBossActions[math.random(#validBossActions)]
+    bossAction.execute(player,boss)
+    utils.cardLimite()
     if player.health <= 0 then
         break
     end
