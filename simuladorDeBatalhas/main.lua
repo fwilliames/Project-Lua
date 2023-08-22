@@ -60,26 +60,5 @@ while true do
     end
 end
 
-if hero.health <= 0 then
-    local line = utils.line()
-    print(line)
-    utils.cardLimite()
-    print(line)
-    print("😢😢😢😢😢😢😢😢😢😢😢")
-    print(
-        string.format("%s nao foi capaz de vencer %s",hero.name, boss.name)
-    )
-    print("Quem sabe na proxima vez....")
-    print(line)
-elseif boss.health <=0 then
-    local line = utils.line()
-    print(line)
-    utils.cardLimite()
-    print(line)
-    print("🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳")
-    print(
-        string.format("%s prevaleceu e venceu %s",hero.name, boss.name)
-    )
-    print("Parabens!!!!!!!")
-    print(line)
-end
+utils.footer(hero,boss)
+

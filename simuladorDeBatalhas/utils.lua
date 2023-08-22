@@ -35,8 +35,7 @@ local utils = {}
         print(line .. "Important text here")
     ]]
     function utils.line()
-        return "| "
-        
+        return "| "  
     end
 
     --[[
@@ -133,7 +132,31 @@ local utils = {}
     function utils.ask()
         io.write("> ")
         local answer = io.read("*n")
-        return answer
-        
+        return answer      
     end
+
+    function utils.footer(playerData, creatureData)
+        if playerData.health <= 0 then
+            local line = utils.line()
+            utils.cardLimite()
+            print(line)
+            print(line .. "😢😢😢😢😢😢😢😢😢😢😢")
+            print(
+                string.format("%s%s nao foi capaz de vencer %s",line,playerData.name, creatureData.name)
+            )
+            print(line .."Quem sabe na proxima vez....")
+            print(line)
+        elseif creatureData.health <=0 then
+            local line = utils.line()
+            utils.cardLimite()
+            print(line)
+            print(line .."🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳")
+            print(
+                string.format("%s%s prevaleceu e venceu %s",line,playerData.name, creatureData.name)
+            )
+            print(line .."Parabens!!!!!!!")
+            print(line)       
+        end
+    end
+
 return utils
