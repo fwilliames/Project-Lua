@@ -1,3 +1,4 @@
+local utils = require("utils")
 local actions = {}
 
     actions.list = {}
@@ -20,9 +21,13 @@ local actions = {}
                 --Apresentando o resultado
                 if sucess then
                     print(
-                        string.format("Voce acertou a criatura e deu %d pontos de dano!")
+                        string.format("Voce acertou a criatura e deu %d pontos de dano!",damage)
                     )
                     creatureData.health = creatureData.health - damage
+                    local healthRate = math.floor((creatureData.health / creatureData.maxHealth) * 10)
+                    print(
+                        string.format("%s: %s",creatureData.name, utils.getProgressBar(healthRate))
+                    )
                 else
                     print("Voce errou o ataque!")
                 end
@@ -45,15 +50,41 @@ local actions = {}
                 playerData.health = math.min(playerData.maxHealth,playerData.health + regenPoints)
                 print("Voce usou um pote de regeneracao e recuperou alguns pontos de vida")
 
-                
             end
         }
+        actions.list[#actions.list + 1] = swordAttack
 
+        actions.list[#actions.list + 1] = regenPotion
+    end
 
-        actions.list[#actions + 1] = swordAttack
+    --[[
+    Returns a list of valid actions for a specific player and creature, based on requirements.
 
+    Parameters:
+    - playerData: A table containing player data.
+    - creatureData: A table containing creature data.
 
+    Returns:
+    A table containing the actions that meet the requirements for the player and creature.
+
+    Example Usage:
+    local validActions = actions.getValidActions(playerData, creatureData)
+    for _, action in ipairs(validActions) do
+        print("Valid action: " .. action.name)
+    end
+]]
+    function actions.getValidActions(playerData, creatureData)
+        local validActions = {}
         
+        for _, action in pairs(actions.list) do 
+            local requirement = action.requirement
+            local isValid = requirement == nil or requirement(playerData,creatureData)
+
+            if isValid then
+                validActions[#validActions + 1] = action
+            end       
+        end
+        return validActions
     end
 
 return actions
