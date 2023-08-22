@@ -25,6 +25,21 @@ function utils.cardLimite()
 end
 
 --[[
+    Returns a stylized line for use in visual compositions, such as a "line card".
+
+    Returns:
+    A string containing a stylized line for visual delimitation.
+
+    Example Usage:
+    local line = utils.cardLine()
+    print(line .. "Important text here")
+]]
+function utils.cardLine()
+    return "| "
+    
+end
+
+--[[
     Displays a stylized header with a title and a boundary line, creating a visual presentation.
 
     Usage:
@@ -45,5 +60,61 @@ function utils.header()
                                 Voce Empunha sua espada e se prepara para lutar.
                                         ⚔ É hora da batalha!!! ⚔
     ]]) 
+end
+
+--[[
+    Returns a graphical representation of a progress bar based on the provided attribute.
+    
+    Parameters:
+    - attribute: An integer number representing the current progress (ranging from 0 to 10).
+
+    Returns:
+    A string containing a progress bar composed of filled and empty blocks, 
+    as determined by the value of the attribute.
+
+    Example Usage:
+    local progress = utils.getProgressBar(7)
+    print("Progress: " .. progress)
+]]
+function utils.getProgressBar(attribute)
+    local fullChar = "⚪"
+    local emptyChar = "⚫"
+    local result = ""
+
+    for i = 1, 10, 1 do
+        if i <= attribute then
+            result = result .. fullChar
+        else
+            result = result .. emptyChar
+        end       
+    end
+    return result
+end
+
+--[[
+    Displays a formatted card for a creature, showing its attributes and information.
+
+    Parameters:
+    - creature: A table containing information about the creature to be displayed.
+
+    Usage:
+    utils.printCard(creature)
+]]
+function utils.printCard(creature)
+
+    local healthRate = math.floor((creature.health / creature.maxHealth) * 10)
+    utils.cardLimite()
+    print(utils.cardLine(LINE_CARD))
+    print(utils.cardLine(LINE_CARD) .. creature.name)
+    print(utils.cardLine(LINE_CARD) .. creature.description)
+    print(utils.cardLine(LINE_CARD))
+    print(utils.cardLine(LINE_CARD) .. "Atributos")
+    print(utils.cardLine(LINE_CARD) .. "   Vida:         " .. utils.getProgressBar(healthRate))
+    print(utils.cardLine(LINE_CARD) .. "   Ataque:       " .. utils.getProgressBar(creature.attack))
+    print(utils.cardLine(LINE_CARD) .. "   Defesa:       " .. utils.getProgressBar(creature.defense))
+    print(utils.cardLine(LINE_CARD) .. "   Velocidade:   " .. utils.getProgressBar(creature.speed))
+    print(utils.cardLine(LINE_CARD))
+    utils.cardLimite()
+    
 end
 return utils
