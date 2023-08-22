@@ -136,6 +136,7 @@ local utils = {}
     end
 
     function utils.footer(playerData, creatureData)
+        os.execute("cls")
         if playerData.health <= 0 then
             local line = utils.line()
             utils.cardLimite()
