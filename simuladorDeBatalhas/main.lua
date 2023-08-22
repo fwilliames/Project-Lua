@@ -28,17 +28,13 @@ while true do
         break
     end
 
-    game.bossTurn(hero,boss,bossActions)
-
     --Boss Turn
-    --[[utils.cardLimite()
-    local validBossActions = bossActions.getValidActions(hero,boss)
-    local bossAction = validBossActions[math.random(#validBossActions)]
-    bossAction.execute(hero,boss)
-    utils.cardLimite()]]--
+    game.bossTurn(hero,boss,bossActions)
+    
     if hero.health <= 0 then
         break
     end
+
 end
 
 utils.footer(hero,boss)

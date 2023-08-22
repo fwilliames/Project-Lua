@@ -58,6 +58,17 @@ local game = {}
         end       
     end
 
+    --[[
+        Performs the boss's (creature's) turn, allowing the choice and execution of a valid action.
+
+        Parameters:
+        - playerData: A table containing player data.
+        - creatureData: A table containing creature data.
+        - creatureActions: A table containing creature actions.
+
+        Usage:
+        game.bossTurn(playerData, creatureData, creatureActions)
+    ]]
     function game.bossTurn(playerData,creatureData,creatureActions)
         utils.cardLimite()
         local validBossActions = creatureActions.getValidActions(playerData,creatureData)
@@ -65,4 +76,5 @@ local game = {}
         bossAction.execute(playerData,creatureData)
         utils.cardLimite()        
     end
+
 return game
