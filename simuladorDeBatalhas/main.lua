@@ -21,26 +21,8 @@ bossActions.build()
 
 while true do
     --hero Turn
-    print(
-        string.format("qual sera a proxima acao de %s?",hero.name)
-    )
+    game.heroTurn(hero,heroActions,boss)
     
-    local validheroActions = game.displayActions(hero,heroActions,boss)
-
-    local chosenId = utils.ask()
-    local chosenAction = validheroActions[chosenId]
-    local isActionValid = chosenAction ~= nil
-    os.execute("cls")
-    utils.cardLimite()
-
-    if isActionValid then
-        chosenAction.execute(hero,boss)
-    else
-        print(
-            string.format("Sua acao eh invalida, %s perdeu a vez!",hero.name)
-        )
-    end
-
     if boss.health <= 0 then
         break
     end

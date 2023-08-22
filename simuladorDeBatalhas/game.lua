@@ -1,3 +1,4 @@
+local utils = require("utils")
 local game = {}
 
     --[[
@@ -24,6 +25,27 @@ local game = {}
         return validheroActions
     end
 
+    function game.heroTurn(playerData,PlayerActions,creatureData)
+        print(
+        string.format("qual sera a proxima acao de %s?",playerData.name)
+        )
+        local validPlayerActions = game.displayActions(playerData,PlayerActions,creatureData)
+
+        local chosenId = utils.ask()
+        local chosenAction = validPlayerActions[chosenId]
+        local isActionValid = chosenAction ~= nil
     
+        os.execute("cls")
+        utils.cardLimite()
+
+        if isActionValid then
+            chosenAction.execute(playerData,creatureData)
+        else
+            print(
+                string.format("Sua acao eh invalida, %s perdeu a vez!",playerData.name)
+            )
+        end
+        
+    end
 
 return game
