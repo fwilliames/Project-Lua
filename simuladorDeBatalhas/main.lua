@@ -1,5 +1,5 @@
-local utils = require("utils")
-local game = require("game")
+local utils = require("modules.utils")
+local game = require("modules.game")
 
 utils.enableUtf8()
 utils.header()
