@@ -1,7 +1,5 @@
 local utils = require("modules.utils")
 
-
-
 local game = {}
 
     --[[
@@ -93,20 +91,7 @@ local game = {}
         local creature, creatureActions, player, playerActions = game.setup()
     ]]
     function game.setup()
-
-
-        local randomCreature = math.random(0,1)
-        local chosenCreature = ""
-
-        if randomCreature == 1 then
-            chosenCreature = "drake"
-        else
-            chosenCreature = "colossus"
-
-        end
-        local creature = require("characters.creatures.".. chosenCreature ..".data")
-        local creatureActions = require("characters.creatures.".. chosenCreature ..".actions")
-        utils.printCard(creature)
+        local creature, creatureActions = game.defCreature()
 
         print([[Escolha seu Héroi: 
                 1 - Violete
@@ -123,10 +108,52 @@ local game = {}
         local player = require("characters.heros.".. chosenPlayer ..".data")
         local playerActions = require("characters.heros.".. chosenPlayer ..".actions")
 
-        creatureActions.build()
-        playerActions.build()
+        game.actionsBuild(playerActions,creatureActions)
 
         return creature, creatureActions, player, playerActions
+    end
+
+    --[[
+        Builds player and creature actions, preparing them for the game.
+
+        Parameters:
+        - playerActions: A table containing player actions.
+        - creatureActions: A table containing creature actions.
+
+        Usage:
+        game.actionsBuild(playerActions, creatureActions)
+    ]]
+    function game.actionsBuild(playerActions, creatureActions)
+        playerActions.build()
+        creatureActions.build()
+        
+    end
+
+    --[[
+        Randomly defines a creature for the game, loading its data and corresponding actions.
+
+        Returns:
+        - creature: A table containing creature data.
+        - creatureActions: A table containing creature actions.
+
+        Usage:
+        local creature, creatureActions = game.defCreature()
+    ]]
+    function game.defCreature()
+        local randomCreature = math.random(0,1)
+        local chosenCreature = ""
+
+        if randomCreature == 1 then
+            chosenCreature = "drake"
+        else
+            chosenCreature = "colossus"
+
+        end
+        local creature = require("characters.creatures.".. chosenCreature ..".data")
+        local creatureActions = require("characters.creatures.".. chosenCreature ..".actions")
+        utils.printCard(creature)
+        
+        return creature, creatureActions
     end
 
 return game
