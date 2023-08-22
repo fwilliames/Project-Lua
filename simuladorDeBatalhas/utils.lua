@@ -31,10 +31,10 @@ end
     A string containing a stylized line for visual delimitation.
 
     Example Usage:
-    local line = utils.cardLine()
+    local line = utils.line()
     print(line .. "Important text here")
 ]]
-function utils.cardLine()
+function utils.line()
     return "| "
     
 end
@@ -103,18 +103,19 @@ end
 function utils.printCard(creature)
 
     local healthRate = math.floor((creature.health / creature.maxHealth) * 10)
+    local line = utils.line()
     utils.cardLimite()
-    print(utils.cardLine())
-    print(utils.cardLine() .. creature.name)
-    print(utils.cardLine() .. "Descrição")
-    print(utils.cardLine() .. "   "  .. creature.description)
-    print(utils.cardLine())
-    print(utils.cardLine() .. "Atributos")
-    print(utils.cardLine() .. "   Vida:         " .. utils.getProgressBar(healthRate))
-    print(utils.cardLine() .. "   Ataque:       " .. utils.getProgressBar(creature.attack))
-    print(utils.cardLine() .. "   Defesa:       " .. utils.getProgressBar(creature.defense))
-    print(utils.cardLine() .. "   Velocidade:   " .. utils.getProgressBar(creature.speed))
-    print(utils.cardLine())
+    print(line)
+    print(line .. creature.name)
+    print(line .. "Descrição")
+    print(line .. "   "  .. creature.description)
+    print(line)
+    print(line .. "Atributos")
+    print(line .. "   Vida:         " .. utils.getProgressBar(healthRate))
+    print(line .. "   Ataque:       " .. utils.getProgressBar(creature.attack))
+    print(line .. "   Defesa:       " .. utils.getProgressBar(creature.defense))
+    print(line .. "   Velocidade:   " .. utils.getProgressBar(creature.speed))
+    print(line)
     utils.cardLimite()
     
 end
