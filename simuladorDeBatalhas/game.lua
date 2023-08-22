@@ -1,8 +1,8 @@
 local utils = require("utils")
-local colossus = require("creatures.colossus.colossus")
-local colossusActions = require("creatures.colossus.actions")
-local violet = require("hero.violet.violet")
-local violetActions = require("hero.violet.actions")
+local colossus = require("character.creatures.colossus.colossus")
+local colossusActions = require("character.creatures.colossus.actions")
+local violet = require("character.hero.violet.violet")
+local violetActions = require("character.hero.violet.actions")
 
 local game = {}
 
