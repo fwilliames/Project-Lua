@@ -6,5 +6,6 @@ local data = {}
     data.attack = 8
     data.defense = 8
     data.speed = 1
+    data.hero = false
 
 return data

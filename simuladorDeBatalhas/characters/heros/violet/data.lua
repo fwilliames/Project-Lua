@@ -7,4 +7,6 @@ local data = {}
     data.defense = 2
     data.speed = 3
     data.potion = 3
+    data.hero = true
+    data.mage = false
 return data

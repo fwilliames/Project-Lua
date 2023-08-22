@@ -31,9 +31,7 @@ local actions = {}
                     )
                     playerData.health = playerData.health - damage
                     local healthRate = math.floor((playerData.health / playerData.maxHealth) * 10)
-                    print(
-                        string.format("%s: %s",playerData.name, utils.getProgressBar(healthRate))
-                    )
+                   
                 else
                     print(
                         string.format("%s errou o ataque!",creatureData.name)
@@ -57,9 +55,7 @@ local actions = {}
                 )
                 playerData.health = playerData.health - damage
                 local healthRate = math.floor((playerData.health / playerData.maxHealth) * 10)
-                print(
-                    string.format("%s: %s",playerData.name, utils.getProgressBar(healthRate))
-                )
+                
             end  
         }
 

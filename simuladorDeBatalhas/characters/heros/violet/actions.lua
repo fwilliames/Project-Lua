@@ -31,9 +31,7 @@ local actions = {}
                     )
                     creatureData.health = creatureData.health - damage
                     local healthRate = math.floor((creatureData.health / creatureData.maxHealth) * 10)
-                    print(
-                        string.format("%s: %s",creatureData.name, utils.getProgressBar(healthRate))
-                    )
+                  
                 else
                     print(
                         string.format("%s errou o ataque!",playerData.name)
@@ -57,6 +55,7 @@ local actions = {}
                 local regenPoints = 10
                 playerData.health = math.min(playerData.maxHealth,playerData.health + regenPoints)
                 print("Voce usou um pote de regeneracao e recuperou alguns pontos de vida")
+                
 
             end
         }

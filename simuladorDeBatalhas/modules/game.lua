@@ -199,4 +199,88 @@ local game = {}
         return chosenPlayer
     end
 
+    --[[
+        Displays information about a character, considering whether it is a hero mage, a hero non mage, or a creature.
+
+        Parameters:
+        - character: A table containing character data.
+
+        Usage:
+        game.printInformation(character)
+    ]]
+    function game.printInformation(character)
+       
+        if character.hero then
+            if character.mage then
+                game.printMageInformation(character)
+            else
+                game.printPhysicalInformation(character)
+            end
+        else
+            local creatureRate = math.floor((character.health / character.maxHealth) * 10)
+            print(
+                string.format([[%s : Vida : %s]],character.name,utils.getProgressBar(creatureRate))
+            )
+        end
+       
+    end
+
+    --[[
+        Displays information about the player and the creature, including specific details for each.
+
+        Parameters:
+        - player: A table containing player data.
+        - creature: A table containing creature data.
+
+        Usage:
+        game.displayInformation(player, creature)
+    ]]
+    function game.displayInformation(player,creature)
+        game.printInformation(player)
+        game.printInformation(creature)
+        utils.cardLimite()
+        
+    end
+
+    --[[
+        Displays physical information about a character, including the health level.
+
+        Parameters:
+        - character: A table containing character data.
+
+        Usage:
+        game.printPhysicalInformation(character)
+    ]]
+    function game.printPhysicalInformation(character)
+        local rate = 1
+       
+        if character.hero then
+            rate = character.health
+        else
+            rate = math.floor((character.health / character.maxHealth) * 10)
+        end
+        print(
+            string.format([[%s : Vida : %s]],character.name,utils.getProgressBar(rate))
+        )
+    end
+
+    --[[
+        Displays magical information about a character, including the health and mana levels.
+
+        Parameters:
+        - character: A table containing character data.
+
+        Usage:
+        game.printMageInformation(character)
+    ]]
+    function game.printMageInformation(character)
+        local rate = character.health
+        local mageRate = character.mana
+
+        print(
+            string.format([[%s : Vida : %s  Mana: %s]],character.name,utils.getProgressBar(rate),utils.getProgressBar(mageRate))
+        )
+        
+    end
+
 return game

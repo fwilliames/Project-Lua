@@ -7,6 +7,9 @@ utils.header()
 local boss, bossActions, hero, heroActions = game.setup()
 
 while true do
+
+    game.displayInformation(hero,boss)
+    
     --hero Turn
     game.heroTurn(hero,heroActions,boss)
 

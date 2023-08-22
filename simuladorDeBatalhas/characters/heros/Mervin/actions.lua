@@ -15,7 +15,7 @@ local actions = {}
         local fireBall = {
             description = "Lançar uma bola de fogo",
             requirement = function(playerData, creatureData)
-            return playerData.manaPotion >= 1
+            return playerData.mana >= 1
         end,
             execute = function (playerData, creatureData)
                 playerData.mana = playerData.mana - 1
@@ -34,9 +34,7 @@ local actions = {}
                     )
                     creatureData.health = creatureData.health - damage
                     local healthRate = math.floor((creatureData.health / creatureData.maxHealth) * 10)
-                    print(
-                        string.format("%s: %s",creatureData.name, utils.getProgressBar(healthRate))
-                    )
+                   
                 else
                     print(
                         string.format("%s errou o ataque!",playerData.name)
