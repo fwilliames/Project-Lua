@@ -3,6 +3,12 @@ local actions = {}
 
     actions.list = {}
 
+    --[[
+        Constructs the list of available actions, including body attack, sonar attack, and wait action.
+
+        Usage:
+        actions.build()
+    ]]
     function actions.build()
         actions.list = {}
 
