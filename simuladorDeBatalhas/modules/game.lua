@@ -92,22 +92,7 @@ local game = {}
     ]]
     function game.setup()
         local creature, creatureActions = game.defCreature()
-
-        print([[Escolha seu Héroi: 
-                1 - Violete
-                2 - Mervin
-        ]])
-
-        local chosenPlayer = utils.ask()
-        if chosenPlayer == 1 then
-            chosenPlayer = "violet"
-        else
-            chosenPlayer = "Mervin"
-        end
-        
-        local player = require("characters.heros.".. chosenPlayer ..".data")
-        local playerActions = require("characters.heros.".. chosenPlayer ..".actions")
-
+        local player, playerActions = game.defPlayer()
         game.actionsBuild(playerActions,creatureActions)
 
         return creature, creatureActions, player, playerActions
@@ -154,6 +139,35 @@ local game = {}
         utils.printCard(creature)
         
         return creature, creatureActions
+    end
+
+    --[[
+        Defines the player's hero for the game, loading their data and corresponding actions.
+
+        Returns:
+        - player: A table containing the player's hero data.
+        - playerActions: A table containing the player's hero actions.
+
+        Usage:
+        local player, playerActions = game.defPlayer()
+    ]]
+    function game.defPlayer()
+        print([[Escolha seu Héroi: 
+                1 - Violete
+                2 - Mervin
+        ]])
+
+        local chosenPlayer = utils.ask()
+        if chosenPlayer == 1 then
+            chosenPlayer = "violet"
+        else
+            chosenPlayer = "Mervin"
+        end
+        
+        local player = require("characters.heros.".. chosenPlayer ..".data")
+        local playerActions = require("characters.heros.".. chosenPlayer ..".actions")
+
+        return player, playerActions
     end
 
 return game
